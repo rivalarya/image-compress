@@ -1,50 +1,54 @@
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body{
-  background-color: rgb(238, 235, 221);
-}
-
-.App-header {
-  background-color: rgb(216, 182, 164);
-  padding: 10px 20px;
+.choice {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: calc(10px + 1vmin);
-  color: black;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  font-size: calc(5px + 4vmin);
+  margin-top: 20px;
+}
+
+.choice label {
+  text-align: center;
+}
+
+.choice-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.choice-item button {
+  border: none;
+  background: none;
+  transition: .2s;
+  font-size: calc(5px + 3vmin);
+}
+
+.active {
+  box-shadow: 0px 3px 0px black;
+  transition: .2s;
 }
 
 @media (max-width:576px) {
-  .choice{
-    display:flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-  }
-  .choice label{
-    margin-top: 3px;
-    text-align: center;
-  }
-  .choice-item{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 5px;
-  }
-  .choice-item button{
-    width: 100px;
-    padding: 5px;
-    border: none;
-    background: none;
-    transition: .2s;
+
+  .choice label {
+    margin-top: 4px;
   }
 
-  .active{
-    box-shadow: 0px 3px 0px black;
-    transition: .2s;
+  .choice-item {
+    margin-top: 5px;
   }
+
+  .choice-item button {
+    width: 100px;
+    padding: 5px;
+  }
+
+  main{
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+    margin: 4% auto;
+  }
+
 }

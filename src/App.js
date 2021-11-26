@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import UseFile from './components/Main/useFile/main';
+import UseUrl from './components/Main/useUrl/main';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="brand">
-          <h1>Image Compresser</h1>
-          <p>Save your disk space with the same picture quality!</p> 
-        </div>
-      </header>
-        <div className="choice">
+    <>
+      <div className="choice">
         <label>Compress using :</label>
         <div className="choice-item">
-          <button className="active">Upload file</button>
-          <button>Url</button>
+          <button onClick={UseFile}>Upload file</button>
+          <button onClick={UseUrl}>Url</button>
         </div>
-        </div>
-    </div>
+      </div>
+    </>
   );
 }
 
