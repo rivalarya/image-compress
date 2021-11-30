@@ -1,3 +1,15 @@
+import Swal from 'sweetalert2';
+
+function alertSweet(icon, title, text, footer) {
+    Swal.fire({
+        icon,
+        title,
+        text,
+        footer,
+        timer: 3500
+    })
+}
+
 function kembalikanBerupaByte(size) {
 
     let b, c, lengthFileSize;
@@ -116,7 +128,7 @@ function downloadCompressedImage(link, filename) {
             link.download = filename;
             link.click();
         })
-        .catch(e => alert('Failed, Please try again later.'));
+        .catch(e => alertSweet('error', 'Failed', e));
 }
 
 function handleErrorFromCompressImage(err_code) {
@@ -125,24 +137,25 @@ function handleErrorFromCompressImage(err_code) {
         case 401:
         case 402:
         case 404:
-            alert('Cannot compress image from the url, Please check the url.');
+            alertSweet('error', 'Failed', 'Cannot compress image from the url, Please check the url.');
             break;
 
         case 403:
-            alert('Forbidden file format. Just support JPG, PNG, GIF, TIF and BMP files.');
+            alertSweet('error', 'Failed', 'Forbidden file format. Just support JPG, PNG, GIF, TIF and BMP files.');
             break;
 
         case 502:
-            alert('image provided too large, must be below 5MB.');
+            alertSweet('error', 'Failed', 'image provided too large, must be below 5MB.');
             break;
 
         default:
-            alert('Cannot compress, please try again later.');
+            alertSweet('error', 'Failed', 'Cannot compress, please try again later.');
             break;
     }
 }
 
 export {
+    alertSweet,
     details,
     downloadCompressedImage,
     handleErrorFromCompressImage

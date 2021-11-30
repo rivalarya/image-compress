@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Header from './components/Header/Header';
 import UseFile from './components/Main/useFile/main';
+import Footer from './components/Footer/main';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -14,10 +15,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
-ReactDOM.render( <UseFile /> , document.getElementsByTagName('main')[0]) // render UseFile ketika pertama kali di load
+// render ketika pertama kali di load
+ReactDOM.render(<UseFile />, document.querySelector('main'))
+ReactDOM.render(<Footer />, document.querySelector('footer')); 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);

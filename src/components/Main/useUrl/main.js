@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import "./styleurl.css";
 import "../main.css";
 import {
+    alertSweet,
     details,
     downloadCompressedImage,
     handleErrorFromCompressImage
@@ -76,7 +77,7 @@ const compress = (e) => {
 
                 clickButton.finish(e); // aktifkan lagi button
 
-                return alert(`Success`, value);
+                return alertSweet('success', 'Success', 'Your file has been compressed!');
             } else {
                 handleErrorFromCompressImage(value.error);
                 clickButton.finish(e); // aktifkan lagi button
@@ -84,7 +85,7 @@ const compress = (e) => {
         },
         function (error) {
             clickButton.finish(e);
-            return alert(`Failed : ${error}. Try again later.`);
+            return alertSweet('error', 'Error', `${error}, please try again later.`);
         }
     );
 }

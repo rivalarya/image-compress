@@ -4,13 +4,14 @@ import UseFile from './components/Main/useFile/main';
 import UseUrl from './components/Main/useUrl/main';
 
 function callUrl() {
-  return ReactDOM.render( <UseUrl /> , document.getElementsByTagName('main')[0])
+  return ReactDOM.render( <UseUrl /> , document.querySelector('main'));
 }
 function callFile() {
-  return ReactDOM.render( <UseFile /> , document.getElementsByTagName('main')[0])
+  return ReactDOM.render( <UseFile /> , document.querySelector('main'));
 }
 
 function App() {
+  
   return (
     <>
       <div className="choice">
@@ -22,6 +23,7 @@ function App() {
       </div>
     </>
   );
+  
 }
 
 export default App;

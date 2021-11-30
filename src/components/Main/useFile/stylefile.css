@@ -7,7 +7,7 @@ form{
     height: 200px;
     border: 27px darkblue;
     width: 70%;
-    box-shadow: 0 0 2px black;
+    box-shadow: 0 0 6px 1px rgb(99, 0, 0);
     position: relative;
 }
 
@@ -29,7 +29,7 @@ form:hover {
 }
 
 form:hover .input-file{
-    box-shadow: 0 0 4px 1px black;
+    box-shadow: 0 0 4px 1px rgb(99, 0, 0);
 }
 
 input[type=file]{

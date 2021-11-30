@@ -1,0 +1,16 @@
+.copyright{
+    margin-top: 7%;
+    margin-bottom: .7%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: calc(.7rem + 1vmax);
+}
+
+.copyright a{
+    color: rgb(99, 0, 0);
+}
+
+.copyright a:visited{
+    color: rgb(99, 0, 0);
+}

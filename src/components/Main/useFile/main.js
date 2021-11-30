@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import './stylefile.css';
 import '../main.css';
 import {
+    alertSweet,
     details,
     downloadCompressedImage,
     handleErrorFromCompressImage
@@ -66,7 +67,7 @@ function compress(e) {
                 const chart = new ApexCharts(document.querySelector("#percent"), detail.percent);
                 chart.render(); //render chart untuk persenan hasil kompress
 
-                return alert(`Success`, value);
+                return alertSweet('success', 'Success', 'Your file has been compressed!');
 
             } else {
                 handleErrorFromCompressImage(value.error);
@@ -75,7 +76,7 @@ function compress(e) {
         },
         function (error) {
             effect.finish(); //kembalikan seperti semula
-            return alert(`Failed : ${error}. Try again later.`);
+            return alertSweet('error', 'Error', `${error}, please try again later.`);
         })
             .catch(err => console.log(err))
     }
@@ -104,7 +105,7 @@ function UseFile() {
             <div className="input-file">
                 <div className='choice-file'>
                     <span className="lds-dual-ring" style={{ display: 'none', margin: 'auto' }}></span>
-                    <p> Click on this area to choose <span> or drag and drop </span>your image <span>here</span></p>
+                    <p> Click on this area for choose <span> or drag and drop </span>your image <span>here</span></p>
                 </div>
                 <input 
                     type="file" 

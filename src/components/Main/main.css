@@ -44,6 +44,7 @@ button {
     margin-top: 15%;
     color: black;
     text-align: right;
+    font-size: calc(6px + 1vmax);
 }
 
 @media (max-width:576px) {
@@ -66,5 +67,12 @@ button {
 
     form {
         margin-top: calc(20vh + 1rem);
+    }
+
+    .detail-compress>h5,
+    .before-compress,
+    .after-compress {
+        text-align: center;
+        font-size: calc(3px + 2vmax);
     }
 }
