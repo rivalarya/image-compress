@@ -10,7 +10,7 @@ import {
 import { effect } from './_utils';
 import ApexCharts from 'apexcharts';
 
-const API_PATH = 'http://localhost/image-compresser/public/api/index.php';
+const API_PATH = 'https://image-compress-build.vercel.app/api/index.php';
 
 function compress(e) {
 
