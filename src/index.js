@@ -14,7 +14,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-UseFile() // render UseFile ketika pertama kali di load
+
+ReactDOM.render( <UseFile /> , document.getElementsByTagName('main')[0]) // render UseFile ketika pertama kali di load
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

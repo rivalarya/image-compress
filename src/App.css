@@ -9,6 +9,7 @@
 
 .choice label {
   text-align: center;
+  margin-top: 10px;
 }
 
 .choice-item {
@@ -21,8 +22,8 @@
 .choice-item button {
   border: none;
   background: none;
-  font-size: calc(5px + 3vmin);
-  width: 30%;
+  font-size: calc(8px + 3vmin);
+  width: 38%;
   height: 55px;
 }
 

@@ -1,0 +1,70 @@
+button {
+    cursor: pointer;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+}
+
+.detail-compress:nth-child(1),
+.detail-compress:nth-child(3) {
+    margin: auto;
+}
+
+.detail-compress:nth-child(2) {
+    margin-top: 49px;
+}
+
+.detail-compress>h5,
+.before-compress,
+.after-compress {
+    text-align: center;
+    font-size: calc(11px + 2vmin);
+}
+
+.before-compress,
+.after-compress {
+    font-weight: bold;
+}
+
+#percent {
+    min-width: 162px;
+    max-width: 262px;
+}
+
+.download {
+    font-size: calc(10px + 1vmax);
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.again {
+    margin-top: 15%;
+    color: black;
+    text-align: right;
+}
+
+@media (max-width:576px) {
+
+    .before-compress,
+    .after-compress {
+        margin-top: 4px;
+    }
+
+}
+
+@media (min-width:576px) and (max-width:991px) {
+
+    .detail-compress:nth-child(2) {
+        width: 26%;
+    }
+}
+
+@media (min-width: 992px) {
+
+    form {
+        margin-top: calc(20vh + 1rem);
+    }
+}

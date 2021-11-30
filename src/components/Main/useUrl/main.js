@@ -1,14 +1,17 @@
 import ReactDOM from 'react-dom';
-import "./main.css";
+import "./styleurl.css";
+import "../main.css";
 import {
-    clickButton,
     details,
     downloadCompressedImage,
     handleErrorFromCompressImage
-} from './_utils';
+} from '../_utilsMain';
+import { clickButton } from './_utils.js';
 import ApexCharts from 'apexcharts';
 
 const compress = (e) => {
+
+    const API_PATH = 'http://api.resmush.it/ws.php';
 
     e.preventDefault();    
     clickButton.start(e); //nonaktifkan button
@@ -19,7 +22,7 @@ const compress = (e) => {
     
     let compressImage = new Promise(function (myResolve, myReject) {
         let req = new XMLHttpRequest();
-        req.open('GET', `http://api.resmush.it/ws.php?img=${e.target[0].value}&qlty=${quality}`);
+        req.open('GET', `${API_PATH}?img=${e.target[0].value}&qlty=${quality}`);
         req.onload = function () {
             if (req.status === 200) {
                 myResolve(JSON.parse(req.response));
@@ -31,7 +34,7 @@ const compress = (e) => {
     });
     compressImage.then(
         function (value) {
-            let link = value.dest // yg sudah di kompress
+            let link = value.dest // dest = yg sudah di kompress
             
             if (!value.hasOwnProperty('error')) {
                 
@@ -94,7 +97,7 @@ function UseUrl() {
     }
 
     return (
-        <form onSubmit={compress}>
+       <form onSubmit={compress}>
             <div className="input-url">
                 <input 
                     type="url" 
