@@ -1,8 +1,14 @@
 //ketika user melakukan drag and drop
 const effect = {
-    start: () => {
+    start: (progress) => {
         document.querySelector('input[type=file]').setAttribute('disabled', true);
-        document.querySelector('.choice-file p').textContent = 'Processing...';
+        document.querySelector('.choice-file p').textContent = `Processing... ${parseInt(progress)}%`;
+        if (progress == 100) {
+            //jika progress sudah 100%, ganti text nya
+            setTimeout(() => {
+                document.querySelector('.choice-file p').textContent = 'Preparing image...';                
+            }, 900);
+        }
         document.querySelector('.lds-dual-ring').style.display = 'inline-block';
     },
     dragEnter: () => {
