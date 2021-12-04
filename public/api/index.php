@@ -1,55 +1,46 @@
 <?php
-function generateRandomString($length = 10)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
+// allow CORS
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+
+/* Get the url from query in url */
+if(empty($_REQUEST['token'])){
+    //jika di url tidak ada query 'token'(berarti yg mengakses lewat url), gunakan query url saja
+    $url = $_REQUEST['url'];
+}else{
+    //jika ada query 'token', gunakan yg dibawah ini
+    $url = $_REQUEST['url'] . '&token=' . $_REQUEST['token']; // get url(token terpisah karna karakter &)
 }
 
-/* Get the name of the uploaded file */
-$filename = $_FILES['file']['name'];
-$uniqFilename = generateRandomString() . '-' . $filename;
+$file = str_replace("images/", "images%2F", $url); //menggunakan string method str_replace() karena jika url yg diakses adalah 'http://blabla/images/blabla', akan terjadi error. maka saya ganti karakter '/' menjadi '%2F'
 
-/* Choose where to save the uploaded file */
-$location = "upload/" . $uniqFilename;
+$mime = '';
+$info = '';
+$name = $_REQUEST['nama'];/* Get the name from query in url */
 
-/* Save the uploaded file to the local filesystem */
-if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
+$output = new CURLFile(
+    $file,
+    $mime,
+    $name
+);
+$data = array(
+    "files" => $output,
+);
 
-    $file = $location;
-    $mime = mime_content_type($file);
-    $info = pathinfo($file);
-    $name = $info['basename'];
-    $output = new CURLFile(
-        $file,
-        $mime,
-        $name
-    );
-    $data = array(
-        "files" => $output,
-    );
-
-    $ch = curl_init();
-    curl_setopt(
-        $ch,
-        CURLOPT_URL,
-        'http://api.resmush.it/?qlty=90'
-    );
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    $result = curl_exec($ch);
-    if (curl_errno($ch)) {
-        $result = curl_error($ch);
-    }
-    curl_close($ch);
-
-    echo $result;
-} else {
-    echo 'Failure';
+$ch = curl_init();
+curl_setopt(
+    $ch,
+    CURLOPT_URL,
+    'http://api.resmush.it/?qlty=90'
+);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+$result = curl_exec($ch);
+if (curl_errno($ch)) {
+    $result = curl_error($ch);
 }
+curl_close($ch);
+
+echo $result;
