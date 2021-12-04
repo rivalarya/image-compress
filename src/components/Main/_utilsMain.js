@@ -1,5 +1,7 @@
 import Swal from 'sweetalert2';
 
+const API_PATH = 'http://localhost/image-compresser/public/api/index.php';
+
 function alertSweet(icon, title, text, footer) {
     Swal.fire({
         icon,
@@ -155,6 +157,7 @@ function handleErrorFromCompressImage(err_code) {
 }
 
 export {
+    API_PATH,
     alertSweet,
     details,
     downloadCompressedImage,

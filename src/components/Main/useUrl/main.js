@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import "./styleurl.css";
 import "../main.css";
 import {
+    API_PATH,
     alertSweet,
     details,
     downloadCompressedImage,
@@ -12,18 +13,19 @@ import ApexCharts from 'apexcharts';
 
 const compress = (e) => {
 
-    const API_PATH = 'http://api.resmush.it/ws.php';
-
     e.preventDefault();    
     clickButton.start(e); //nonaktifkan button
-    
-    if (e.target[0].value.search('http') < 0) e.target.lastChild.style.display = 'block'; // jika user memaukan url yg tidak memilik value 'http'
 
-    const quality = 90 //default 92
+    const url = e.target[0].value;
+    
+    if (url.search('http') < 0) e.target.lastChild.style.display = 'block'; // jika user memaukan url yg tidak memilik value 'http'
+
+    let chunk = url.split('/');
+    const nama = chunk[chunk.length - 1];
     
     let compressImage = new Promise(function (myResolve, myReject) {
         let req = new XMLHttpRequest();
-        req.open('GET', `${API_PATH}?img=${e.target[0].value}&qlty=${quality}`);
+        req.open('GET', `${API_PATH}?url=${url}&nama=${nama}`);
         req.onload = function () {
             if (req.status === 200) {
                 myResolve(JSON.parse(req.response));
@@ -39,7 +41,7 @@ const compress = (e) => {
             
             if (!value.hasOwnProperty('error')) {
                 
-                const name = value.src.split('/')  
+                const name = value.dest.split('/')  
                 const detail = details(value.src_size, value.dest_size, value.percent);
 
                 ReactDOM.render(
@@ -91,6 +93,7 @@ const compress = (e) => {
 }
 
 function UseUrl() {
+
     const button = document.querySelectorAll('.choice-item button')
     if (button.length !== 0) {
         button[1].classList.value = 'active'; // ketika diklik tambahkan class active
