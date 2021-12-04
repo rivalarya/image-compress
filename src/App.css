@@ -44,10 +44,6 @@ main {
 
 @media (max-width:576px) {
 
-  main {
-    margin: 18% auto;
-  }
-
   .copyright{
     position: fixed;
     bottom: 7px;

@@ -34,7 +34,7 @@ button {
 }
 
 .download {
-    font-size: calc(10px + 1vmax);
+    font-size: calc(15px + 1vmax);
     display: flex;
     justify-content: center;
     margin-top: 30px;
@@ -44,10 +44,15 @@ button {
     margin-top: 15%;
     color: black;
     text-align: right;
-    font-size: calc(6px + 1vmax);
+    font-size: calc(11px + 1vmax);
 }
 
 @media (max-width:576px) {
+
+    main {
+        margin: 8% auto;
+        margin-bottom: 16%;
+    }
 
     .before-compress,
     .after-compress {

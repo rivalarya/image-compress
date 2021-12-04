@@ -30,7 +30,12 @@ button[type=submit]{
     margin-top: 15%;
 }
 
-@media (max-width:576px) { }
+@media (max-width:576px) {
+    input[type=url] {
+        width: 86vw;
+        font-size: 16px;
+    }
+ }
 
 @media (min-width:576px) and (max-width:991px) {
 

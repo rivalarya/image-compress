@@ -120,7 +120,7 @@ function details(sizeBefore, sizeAfter, percentCompress) {
 }
 
 function downloadCompressedImage(link, filename) {
-    fetch(link)
+    fetch(link.replace('http', 'https'))
         .then(response => response.blob())
         .then(blob => {
             const link = document.createElement("a");
