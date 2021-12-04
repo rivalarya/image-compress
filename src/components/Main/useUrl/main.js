@@ -12,18 +12,17 @@ import ApexCharts from 'apexcharts';
 
 const compress = (e) => {
 
-    const API_PATH = 'http://api.resmush.it/ws.php';
+    const API_PATH = 'https://api-for-rvls-projects.000webhostapp.com/image-compress/url.php';
 
     e.preventDefault();    
     clickButton.start(e); //nonaktifkan button
+    const url = e.target[0].value;
     
-    if (e.target[0].value.search('http') < 0) e.target.lastChild.style.display = 'block'; // jika user memaukan url yg tidak memilik value 'http'
-
-    const quality = 90 //default 92
+    if (url.search('http') < 0) e.target.lastChild.style.display = 'block'; // jika user memasukan url yg tidak memilik value 'http'
     
     let compressImage = new Promise(function (myResolve, myReject) {
         let req = new XMLHttpRequest();
-        req.open('GET', `${API_PATH}?img=${e.target[0].value}&qlty=${quality}`);
+        req.open('GET', `${API_PATH}?url=${url}`);
         req.onload = function () {
             if (req.status === 200) {
                 myResolve(JSON.parse(req.response));
@@ -32,7 +31,7 @@ const compress = (e) => {
             }
         };
         req.send();
-    });
+    })
     compressImage.then(
         function (value) {
             let link = value.dest // dest = yg sudah di kompress

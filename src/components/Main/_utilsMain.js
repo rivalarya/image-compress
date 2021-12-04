@@ -38,7 +38,7 @@ function details(sizeBefore, sizeAfter, percentCompress) {
     result.afterCompress = kembalikanBerupaByte(sizeAfter);
 
     const options = {
-        series: [percentCompress],
+        series: [Math.round(parseInt(percentCompress))],
         chart: {
             height: 250,
             type: 'radialBar'
