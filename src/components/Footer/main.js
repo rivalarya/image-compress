@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer>
             <div className="copyright">
-            <p>Made by <a href="https://rifalarya-2.github.io" target="_blank" rel="noreferrer">Rival</a></p> 
+            <p>Made by <a href="https://github.com/rivalarya" target="_blank" rel="noreferrer">Rival</a></p> 
             </div>
         </footer>
     )
